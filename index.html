@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paint App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Left Toolbar (Desktop) -->
+    <aside class="toolbar toolbar-left" id="desktopToolbar">
+      <div class="toolbar-section">
+        <h3 class="section-title">Tools</h3>
+        <div class="tool-buttons">
+          <button class="tool-btn active" data-tool="brush" title="Brush">✏️</button>
+          <button class="tool-btn" data-tool="eraser" title="Eraser">🧹</button>
+          <button class="tool-btn" data-tool="line" title="Line">📏</button>
+          <button class="tool-btn" data-tool="rectangle" title="Rectangle">▭</button>
+          <button class="tool-btn" data-tool="circle" title="Circle">◯</button>
+        </div>
+      </div>
+
+      <div class="toolbar-divider"></div>
+
+      <div class="toolbar-section">
+        <h3 class="section-title">Color</h3>
+        <input type="color" id="colorPicker" class="color-input" value="#000000">
+      </div>
+
+      <div class="toolbar-divider"></div>
+
+      <div class="toolbar-section">
+        <h3 class="section-title">Size</h3>
+        <input type="range" id="sizeSlider" class="size-slider" min="1" max="50" value="5">
+        <p class="size-display" id="sizeDisplay">5px</p>
+      </div>
+
+      <div class="toolbar-divider"></div>
+
+      <div class="toolbar-section">
+        <button class="action-btn" id="undoBtn">↶ Undo</button>
+        <button class="action-btn" id="redoBtn">↷ Redo</button>
+      </div>
+
+      <div class="toolbar-divider"></div>
+
+      <div class="toolbar-section">
+        <label class="action-btn upload-btn">📤 Upload<input type="file" id="imageUpload" accept="image/*"></label>
+        <button class="action-btn" id="downloadBtn">⬇ Download</button>
+        <button class="action-btn danger-btn" id="clearBtn">🗑 Clear</button>
+      </div>
+    </aside>
+
+    <!-- Canvas Area -->
+    <main class="canvas-area">
+      <canvas id="canvas"></canvas>
+    </main>
+
+    <!-- Bottom Toolbar (Mobile) -->
+    <div class="toolbar toolbar-bottom" id="mobileToolbar">
+      <div class="mobile-tools">
+        <button class="tool-btn active" data-tool="brush" title="Brush">✏️</button>
+        <button class="tool-btn" data-tool="eraser" title="Eraser">🧹</button>
+        <button class="tool-btn" data-tool="line" title="Line">📏</button>
+        <button class="tool-btn" data-tool="rectangle" title="Rectangle">▭</button>
+        <button class="tool-btn" data-tool="circle" title="Circle">◯</button>
+      </div>
+
+      <div class="mobile-controls">
+        <input type="color" id="colorPickerMobile" class="color-input-small" value="#000000">
+        <input type="range" id="sizeSliderMobile" class="size-slider-small" min="1" max="50" value="5">
+        <span class="size-text" id="sizeDisplayMobile">5px</span>
+        <button class="control-btn" id="undoBtnMobile">↶</button>
+        <button class="control-btn" id="redoBtnMobile">↷</button>
+        <label class="control-btn">📤<input type="file" id="imageUploadMobile" accept="image/*"></label>
+        <button class="control-btn" id="downloadBtnMobile">⬇</button>
+        <button class="control-btn danger-btn" id="clearBtnMobile">🗑</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

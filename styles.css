@@ -1,0 +1,336 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    overflow: hidden;
+    height: 100vh;
+  }
+  
+  .container {
+    display: flex;
+    height: 100vh;
+    gap: 0;
+  }
+  
+  /* Desktop Toolbar */
+  .toolbar-left {
+    width: 140px;
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    border-right: 1px solid rgba(71, 85, 105, 0.3);
+    padding: 16px 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .toolbar-left::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .toolbar-left::-webkit-scrollbar-track {
+    background: rgba(71, 85, 105, 0.1);
+    border-radius: 3px;
+  }
+  
+  .toolbar-left::-webkit-scrollbar-thumb {
+    background: rgba(71, 85, 105, 0.4);
+    border-radius: 3px;
+  }
+  
+  .toolbar-left::-webkit-scrollbar-thumb:hover {
+    background: rgba(71, 85, 105, 0.6);
+  }
+  
+  .toolbar-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(203, 213, 225, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .tool-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .tool-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(71, 85, 105, 0.3);
+    color: rgba(203, 213, 225, 0.8);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+  
+  .tool-btn:hover {
+    background: rgba(71, 85, 105, 0.5);
+  }
+  
+  .tool-btn.active {
+    background: rgb(99, 102, 241);
+    color: white;
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+  }
+  
+  .color-input {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .size-slider {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(71, 85, 105, 0.3);
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+  }
+  
+  .size-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgb(99, 102, 241);
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
+  }
+  
+  .size-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgb(99, 102, 241);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
+  }
+  
+  .size-display {
+    font-size: 12px;
+    color: rgba(148, 163, 184, 0.8);
+    text-align: center;
+    margin-top: 4px;
+  }
+  
+  .toolbar-divider {
+    height: 1px;
+    background: rgba(71, 85, 105, 0.3);
+  }
+  
+  .action-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(71, 85, 105, 0.3);
+    color: rgba(203, 213, 225, 0.8);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .action-btn:hover:not(:disabled) {
+    background: rgba(71, 85, 105, 0.5);
+  }
+  
+  .action-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  
+  .action-btn.danger-btn {
+    background: rgba(239, 68, 68, 0.2);
+    color: rgba(248, 113, 113, 0.8);
+  }
+  
+  .action-btn.danger-btn:hover {
+    background: rgba(239, 68, 68, 0.4);
+  }
+  
+  .upload-btn {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .upload-btn input {
+    display: none;
+  }
+  
+  /* Canvas Area */
+  .canvas-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+  }
+  
+  #canvas {
+    display: block;
+    cursor: crosshair;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  /* Mobile Toolbar */
+  .toolbar-bottom {
+    display: none;
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(71, 85, 105, 0.3);
+    padding: 12px;
+    gap: 12px;
+    flex-direction: column;
+  }
+  
+  .mobile-tools {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  
+  .mobile-tools::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  .mobile-tools::-webkit-scrollbar-thumb {
+    background: rgba(71, 85, 105, 0.4);
+    border-radius: 2px;
+  }
+  
+  .mobile-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .color-input-small {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .size-slider-small {
+    width: 80px;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(71, 85, 105, 0.3);
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+  }
+  
+  .size-slider-small::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgb(99, 102, 241);
+    cursor: pointer;
+  }
+  
+  .size-slider-small::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgb(99, 102, 241);
+    cursor: pointer;
+    border: none;
+  }
+  
+  .size-text {
+    font-size: 11px;
+    color: rgba(148, 163, 184, 0.8);
+    min-width: 28px;
+  }
+  
+  .control-btn {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(71, 85, 105, 0.3);
+    color: rgba(203, 213, 225, 0.8);
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .control-btn:hover:not(:disabled) {
+    background: rgba(71, 85, 105, 0.5);
+  }
+  
+  .control-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  
+  .control-btn.danger-btn {
+    background: rgba(239, 68, 68, 0.2);
+    color: rgba(248, 113, 113, 0.8);
+  }
+  
+  .control-btn input {
+    display: none;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .toolbar-left {
+      display: none;
+    }
+  
+    .toolbar-bottom {
+      display: flex;
+    }
+  
+    .canvas-area {
+      flex: 1;
+    }
+  
+    .mobile-tools .tool-btn {
+      padding: 6px 10px;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+  }
+  
